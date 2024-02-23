@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+/* text color */
+.text-color-green {
+    color: #092635;
+}
+
+/* bg color */
+.bg-color-1 {
+    background-color: #96B6C5; /* Default color: white */
+}
+.bg-color-2 {
+    background-color: #ADC4CE; /* Default color: white */
+}
+.bg-color-3 {
+    background-color: #EEE0C9; /* Default color: white */
+}
+.bg-color-4 {
+    background-color: #F1F0E8; /* Default color: white */
+}
+
