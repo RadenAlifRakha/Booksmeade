@@ -5,7 +5,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="text-gray-900">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <div class="flex justify-between">
+                        <div class="flex justify-between mt-4 ml-2 mr-2">
                             <button data-modal-target="modalTambah" data-modal-toggle="modalTambah" type="button" class="text-white bg-green-400 hover:bg-green-500 focus:ring-2 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-5 inline-flex items-center">
                                 <svg class="w-4 h-4 text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>

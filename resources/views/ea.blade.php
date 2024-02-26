@@ -1,104 +1,105 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Booksmeade') }}</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-    <!-- Scripts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
-
-<body>
-    <nav class="bg-white border-gray-200 dark:bg-gray-900">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="{{ asset('img/logo-buku2.png') }}" class="h-8" alt="Flowbite Logo" />
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-            </a>
-            <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+<aside id="logo-sidebar"
+    class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0"
+    aria-label="Sidebar">
+    <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
+        <ul class="space-y-2 font-medium">
+            <li>
+                <a href="{{ route('dashboard') }}"
+                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+                    <svg class="w-5 h-5 text-gray-800 transition duration-75 group-hover:text-gray-900" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                        <path
+                            d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
+                        <path
+                            d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
+                    </svg>
+                    <span class="ms-3">Dashboard</span>
+                </a>
+            </li>
+            <li>
                 <button type="button"
-                    class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                    id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
-                    data-dropdown-placement="bottom">
-                    <span class="sr-only">Open user menu</span>
-                    <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
-                </button>
-                <!-- Dropdown menu -->
-                <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
-                    id="user-dropdown">
-                    <div class="px-4 py-3">
-                        <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-                        <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
-                    </div>
-                    <ul class="py-2" aria-labelledby="user-menu-button">
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign
-                                out</a>
-                        </li>
-                    </ul>
-                </div>
-                <button data-collapse-toggle="navbar-user" type="button"
-                    class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                    aria-controls="navbar-user" aria-expanded="false">
-                    <span class="sr-only">Open main menu</span>
-                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 17 14">
+                    class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100"
+                    aria-controls="dropdown-buku" data-collapse-toggle="dropdown-buku">
+                    <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                        <path
+                            d="M20 14h-2.7L11 20.3l-.9.7H20a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM9 3H4a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V4a1 1 0 0 0-1-1ZM6.5 18.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM19.1 7.9l-3.5-3.5a1 1 0 0 0-1.4 0L12 6.5v10l7.1-7.2a1 1 0 0 0 0-1.4Z" />
+                    </svg>
+                    <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Data Buku</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M1 1h15M1 7h15M1 13h15" />
+                            d="m1 1 4 4 4-4" />
                     </svg>
                 </button>
-            </div>
-            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
-                <ul
-                    class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <ul id="dropdown-buku"
+                    class="{{ request()->routeIs('dataBuku.index', 'kategori.index', 'kategoriBukuRelasi.index') ? '' : 'hidden' }} py-2 space-y-2">
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
-                            aria-current="page">Home</a>
+                        <a href="{{ route('dataBuku.index') }}"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Buku</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                        <a href="{{ route('kategori.index') }}"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Kategori</a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+                        <a href="{{ route('kategoriBukuRelasi.index') }}"
+                            class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Buku
+                            & Kategori</a>
                     </li>
                 </ul>
-            </div>
-        </div>
-    </nav>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-</body>
+            </li>
+            <li>
+                <a href="{{ route('peminjaman.index') }}"
+                    class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+                    <svg class="w-5 h-5 text-gray-800 transition duration-75 group-hover:text-gray-900"
+                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m17 21-5-4-5 4V3.9c0-.2 0-.5.2-.6l.6-.3h8.4c.2 0 .4 0 .6.3l.2.6V21Z" />
+                    </svg>
+                    <span class="ms-3">Peminjaman</span>
+                </a>
+            </li>
+            <li>
+                @if (auth()->user()->role == 'admin')
+                    <button type="button"
+                        class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100"
+                        aria-controls="dropdown-pengguna" data-collapse-toggle="dropdown-pengguna">
+                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                            viewBox="0 0 22 21">
+                            <path fill-rule="evenodd"
+                                d="M8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2 9a4 4 0 0 0-4 4v1c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-1a4 4 0 0 0-4-4H6Zm7.3-2a6 6 0 0 0 0-6A4 4 0 0 1 20 8a4 4 0 0 1-6.7 3Zm2.2 9a4 4 0 0 0 .5-2v-1a6 6 0 0 0-1.5-4H18a4 4 0 0 1 4 4v1a2 2 0 0 1-2 2h-4.5Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Data Pengguna</span>
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 4 4 4-4" />
+                        </svg>
+                    </button>
+                    <ul id="dropdown-pengguna"
+                        class="hidden py-2 space-y-2">
+                        <li>
+                            <a href="{{ route('petugas.index') }}"
+                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Petugas</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('anggota.index') }}"
+                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100">Anggota</a>
+                        </li>
+                    </ul>
+                @endif
+            </li>
+        </ul>
+    </div>
+</aside>
 
-</html>
+<div class="p-4 sm:ml-64">
+    <div class="p-4 border-2 border-gray-200 rounded-lg mt-14">
+        <div class=" gap-4 mb-4">
+            {{ $slot }}
+        </div>
+    </div>
+</div>

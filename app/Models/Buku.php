@@ -4,21 +4,34 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Buku extends Model
 {
     use HasFactory;
+    use Sluggable;
 
     protected $table = 'buku';
 
     protected $fillable = [
         'judul',
         'foto',
+        'deskripsi',
+        'slug',
         'penulis',
         'penerbit',
         'tahun_terbit',
         'stok',
     ];
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'judul'
+            ]
+        ];
+    }
 
     public function kategoriBukuRelasi()
     {

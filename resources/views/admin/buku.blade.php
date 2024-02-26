@@ -1,18 +1,18 @@
 <x-dashboard-layout>
     <h1 class="text-2xl font-semibold">Data Buku</h1>
-    <div class="pr-6 py-12">
+    <div class="pr-6 py-5">
         <div class="max-w-7xl mx-auto">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="text-gray-900">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <div class="flex justify-between">
+                        <div class="flex justify gap-3 mt-4 ml-2 mr-2">
                             <button data-modal-target="modalTambah" data-modal-toggle="modalTambah" type="button" class="text-white bg-green-400 hover:bg-green-500 focus:ring-2 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-5 inline-flex items-center">
                                 <svg class="w-4 h-4 text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
                                 </svg>
                                 Tambah
                             </button>
-                            <button type="button" onclick="window.open('{{ route('dataBuku.pdf') }}','_blank')" class="text-white bg-secondary hover:bg-gray-700 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-5 inline-flex items-center">
+                            <button type="button" onclick="window.open('{{ route('dataBuku.pdf') }}','_blank')" class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-5 inline-flex items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                                 </svg>
@@ -26,10 +26,13 @@
                                         No
                                     </th>
                                     <th scope="col" class="px-6 py-3">
+                                        Foto
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
                                         Judul
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Foto
+                                        Deskripsi
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         Penulis
@@ -58,10 +61,13 @@
                                             {{ $no++ }}
                                         </th>
                                         <td class="px-6 py-4">
+                                            <img src="{{ asset($item->foto) }}" width="100" alt="Img" class="rounded-lg" />
+                                        </td>
+                                        <td class="px-6 py-4">
                                             {{ $item->judul }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            <img src="{{ asset($item->foto) }}" width="100" alt="Img" class="rounded-lg" />
+                                            {{ Str::limit($item->deskripsi, 100) }}
                                         </td>
                                         <td class="px-6 py-4">
                                             {{ $item->penulis }}
@@ -126,23 +132,27 @@
                                                                 <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50" aria-describedby="foto_help" id="foto" type="file" name="foto">
                                                             </div>
                                                             <div class="col-span-2">
+                                                                <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
+                                                                <textarea id="deskripsi" name="deskripsi" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">{{ $item->deskripsi }}</textarea>
+                                                            </div>
+                                                            <div class="col-span-2 sm:col-span-1">
                                                                 <label for="penulis" class="block mb-2 text-sm font-medium text-gray-900">Penulis</label>
                                                                 <input type="text" name="penulis" id="penulis" value="{{ $item->penulis }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
                                                             </div>
-                                                            <div class="col-span-2">
+                                                            <div class="col-span-2 sm:col-span-1">
                                                                 <label for="penerbit" class="block mb-2 text-sm font-medium text-gray-900">Penerbit</label>
                                                                 <input type="text" name="penerbit" id="penerbit" value="{{ $item->penerbit }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
                                                             </div>
-                                                            <div class="col-span-2">
+                                                            <div class="col-span-2 sm:col-span-1">
                                                                 <label for="tahun_terbit" class="block mb-2 text-sm font-medium text-gray-900">Tahun Terbit</label>
                                                                 <input type="text" name="tahun_terbit" id="tahun_terbit" value="{{ $item->tahun_terbit }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
                                                             </div>
-                                                            <div class="col-span-2">
+                                                            <div class="col-span-2 sm:col-span-1">
                                                                 <label for="stok" class="block mb-2 text-sm font-medium text-gray-900">Stok</label>
                                                                 <input type="text" name="stok" id="stok" value="{{ $item->stok }}" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
                                                             </div>
                                                         </div>
-                                                        <button type="submit" class="text-white bg-primary hover:bg-blue-500 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-5">
+                                                        <button type="submit" class="text-white bg-green-500 hover:bg-green-500 focus:ring-2 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-5">
                                                             Simpan
                                                         </button>
                                                     </form>
@@ -190,23 +200,27 @@
                         <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50" aria-describedby="foto_help" id="foto" type="file" name="foto">
                     </div>
                     <div class="col-span-2">
+                        <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
+                        <textarea id="deskripsi" name="deskripsi" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
                         <label for="penulis" class="block mb-2 text-sm font-medium text-gray-900">Penulis</label>
                         <input type="text" name="penulis" id="penulis" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
                     </div>
-                    <div class="col-span-2">
+                    <div class="col-span-2 sm:col-span-1">
                         <label for="penerbit" class="block mb-2 text-sm font-medium text-gray-900">Penerbit</label>
                         <input type="text" name="penerbit" id="penerbit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
                     </div>
-                    <div class="col-span-2">
+                    <div class="col-span-2 sm:col-span-1">
                         <label for="tahun_terbit" class="block mb-2 text-sm font-medium text-gray-900">Tahun Terbit</label>
                         <input type="text" name="tahun_terbit" id="tahun_terbit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
                     </div>
-                    <div class="col-span-2">
+                    <div class="col-span-2 sm:col-span-1">
                         <label for="stok" class="block mb-2 text-sm font-medium text-gray-900">Stok</label>
                         <input type="text" name="stok" id="stok" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" required="">
                     </div>
                 </div>
-                <button type="submit" class="text-white bg-primary hover:bg-blue-500 focus:ring-2 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-5">
+                <button type="submit" class="text-white bg-green-500 hover:bg-green-500 focus:ring-2 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-5">
                     Simpan
                 </button>
             </form>

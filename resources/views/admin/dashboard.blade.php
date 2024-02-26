@@ -1,3 +1,6 @@
 <x-dashboard-layout>
-    <h1 class="text-2xl font-semibold">Dashboard</h1>
+    <div class="text-center">
+        <h1 class="text-2xl font-bold">Dashboard</h1>
+        <span class="font-semibold">Selamat datang {{ Auth::user()->name }}</span>
+    </div>
 </x-dashboard-layout>

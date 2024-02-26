@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [BerandaController::class, 'index'])->name('beranda');
-Route::get('/buku/{id}', [BukuController::class, 'show'])->name('buku.show');
+Route::get('/buku/{slug}', [BukuController::class, 'show'])->name('buku.show');
 Route::get('/buku', [BukuController::class, 'showRandom'])->name('buku.random');
 
 Route::middleware('auth')->group(function () {

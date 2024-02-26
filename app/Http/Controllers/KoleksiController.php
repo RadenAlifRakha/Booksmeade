@@ -4,18 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Buku;
 use App\Models\Koleksi;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class KoleksiController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $query = $request->input('query');
         $koleksi = Koleksi::where('users_id', Auth::user()->id)->get();
         $buku = Buku::whereHas('peminjaman', function($query) {
             $query->where('users_id', Auth::user()->id);
         })->get();
-        return view('user.koleksi', compact('koleksi', 'buku'));
+        $kategori = Kategori::all();
+        return view('user.koleksi', compact('koleksi', 'buku', 'kategori'));
     }
 
     public function store(Request $request)

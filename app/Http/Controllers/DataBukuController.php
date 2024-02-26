@@ -19,6 +19,7 @@ class DataBukuController extends Controller
         $request->validate([
             'judul' => 'required',
             'foto' => 'image|nullable|mimes:png,jpg,gif|max:2048',
+            'deskripsi' => 'required',
             'penulis' => 'required',
             'penerbit' => 'required',
             'tahun_terbit' => 'required',
@@ -39,13 +40,14 @@ class DataBukuController extends Controller
         Buku::create([
             'judul' => $request->judul,
             'foto' => $path.$filename,
+            'deskripsi' => $request->deskripsi,
             'penulis' => $request->penulis,
             'penerbit' => $request->penerbit,
             'tahun_terbit' => $request->tahun_terbit,
             'stok'     => $request->stok,
         ]);
 
-        return redirect()->route('dataBuku.index');
+        return redirect()->route('dataBuku.index')->with(['success' => 'Buku berhasil ditambahkan']);
     }
 
     public function update(Request $request, $id)
@@ -53,6 +55,7 @@ class DataBukuController extends Controller
         $request->validate([
             'judul' => 'required',
             'foto' => 'image|nullable|mimes:png,jpg,gif|max:2048',
+            'deskripsi' => 'required',
             'penulis' => 'required',
             'penerbit' => 'required',
             'tahun_terbit' => 'required',
@@ -75,6 +78,7 @@ class DataBukuController extends Controller
             $buku->update([
                 'judul' => $request->judul,
                 'foto' => $path.$filename,
+                'deskripsi' => $request->deskripsi,
                 'penulis' => $request->penulis,
                 'penerbit' => $request->penerbit,
                 'tahun_terbit' => $request->tahun_terbit,
@@ -83,6 +87,7 @@ class DataBukuController extends Controller
         } else {
             $buku->update([
                 'judul' => $request->judul,
+                'deskripsi' => $request->deskripsi,
                 'penulis' => $request->penulis,
                 'penerbit' => $request->penerbit,
                 'tahun_terbit' => $request->tahun_terbit,
@@ -90,7 +95,7 @@ class DataBukuController extends Controller
             ]);
         }
 
-        return redirect()->route('dataBuku.index');
+        return redirect()->route('dataBuku.index')->with(['success' => 'Buku berhasil diubah']);
     }
 
     public function destroy($id)
@@ -103,7 +108,7 @@ class DataBukuController extends Controller
 
         $buku->delete();
 
-        return redirect()->route('dataBuku.index');
+        return redirect()->route('dataBuku.index')->with(['success' => 'Buku berhasil dihapus']);
     }
 
     public function bukuPDF()

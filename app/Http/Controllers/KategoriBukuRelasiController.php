@@ -26,7 +26,7 @@ class KategoriBukuRelasiController extends Controller
 
         KategoriBukuRelasi::create($request->all());
 
-        return redirect()->route('kategoriBukuRelasi.index');
+        return redirect()->route('kategoriBukuRelasi.index')->with(['success' => 'Kategori Buku berhasil ditambahkan']);
     }
 
     public function update(Request $request, $id)
@@ -39,7 +39,7 @@ class KategoriBukuRelasiController extends Controller
         $kategoriBuku = KategoriBukuRelasi::findOrFail($id);
         $kategoriBuku->update($request->all());
 
-        return redirect()->route('kategoriBukuRelasi.index');
+        return redirect()->route('kategoriBukuRelasi.index')->with(['success' => 'Kategori Buku berhasil diubah']);
     }
 
     public function destroy($id)
@@ -47,6 +47,6 @@ class KategoriBukuRelasiController extends Controller
         $kategoriBuku = KategoriBukuRelasi::findOrFail($id);
         $kategoriBuku->delete();
 
-        return redirect()->route('kategoriBukuRelasi.index');
+        return redirect()->route('kategoriBukuRelasi.index')->with(['success' => 'Kategori Buku berhasil dihapus']);
     }
 }
