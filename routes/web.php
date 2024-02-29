@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataBukuController;
 use App\Http\Controllers\KategoriBukuRelasiController;
 use App\Http\Controllers\KategoriController;
@@ -28,7 +29,7 @@ Route::get('/buku', [BukuController::class, 'showRandom'])->name('buku.random');
 
 Route::middleware('auth')->group(function () {
     Route::middleware(['role:admin,petugas'])->group(function () {
-        Route::get('/dashboard', function () { return view('admin.dashboard'); })->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         // Data Buku
         Route::get('/dashboard/buku', [DataBukuController::class, 'index'])->name('dataBuku.index');
         Route::post('/dashboard/buku', [DataBukuController::class, 'store'])->name('dataBuku.store');
