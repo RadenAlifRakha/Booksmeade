@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Booksmeade') }}</title>
+    <title>{{ config('Booksmeade') }}Booksmeade</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/logo-buku.png') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -18,7 +19,7 @@
 </head>
 
 <body>
-    <div class="flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0 white:bg-gray-900">
+    <div class="flex flex-col items-center justify-center px-6 mx-auto md:h-screen pt:mt-0 white:bg-gray-900">
         <a href="{{ route('beranda') }}"
             class="flex items-center justify-center mb-8 text-2xl font-semibold lg:mb-10 dark:text-white">
             <img src="{{ asset('img/logo-buku.png') }}" class="mr-4" alt="FlowBite Logo" height="100px"

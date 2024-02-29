@@ -58,7 +58,7 @@
                                             {{ $item->alamat }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            <form action="{{ route('petugas.destroy', $item->id) }}" method="POST" class="flex">
+                                            <form action="{{ route('petugas.destroy', $item->id) }}" method="POST" class="flex" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                                 @csrf
                                                 @method('DELETE')
                                                 <div>

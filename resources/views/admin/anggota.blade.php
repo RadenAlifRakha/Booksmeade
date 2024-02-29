@@ -23,6 +23,12 @@
                                     <th scope="col" class="px-6 py-3">
                                         Alamat
                                     </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Total Peminjaman
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Riwayat Peminjaman
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -31,7 +37,8 @@
                                 @endphp
                                 @foreach ($anggota as $item)
                                     <tr class="odd:bg-white even:bg-gray-50 border-b">
-                                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                             {{ $no++ }}
                                         </th>
                                         <td class="px-6 py-4">
@@ -45,6 +52,22 @@
                                         </td>
                                         <td class="px-6 py-4">
                                             {{ $item->alamat }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $item->peminjaman->count() }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <ul>
+                                                @php
+                                                    $no = 1;
+                                                @endphp
+                                                @foreach ($item->peminjaman as $peminjaman)
+                                                    <li>
+                                                        {{ $no++ }}. {{ $peminjaman->buku->judul }}
+                                                        {{-- - {{ $peminjaman->tgl_peminjaman }} --}}
+                                                    </li>
+                                                @endforeach
+                                            </ul>
                                         </td>
                                     </tr>
                                 @endforeach

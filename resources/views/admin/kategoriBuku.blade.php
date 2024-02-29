@@ -1,6 +1,6 @@
 <x-dashboard-layout>
     <h1 class="text-2xl font-semibold">Data Kategori Buku Relasi</h1>
-    <div class="pr-6 py-12">
+    <div class="pr-6 py-5">
         <div class="max-w-7xl mx-auto">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="text-gray-900">
@@ -46,7 +46,7 @@
                                             {{ $item->kategori->nama_kategori }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            <form action="{{ route('kategoriBukuRelasi.destroy', $item->id) }}" method="POST" class="flex">
+                                            <form action="{{ route('kategoriBukuRelasi.destroy', $item->id) }}" method="POST" class="flex" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
                                                 @csrf
                                                 @method('DELETE')
                                                 <div>

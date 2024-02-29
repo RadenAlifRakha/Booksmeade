@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('users_id');
             $table->unsignedBigInteger('buku_id');
             $table->date('tgl_peminjaman');
-            $table->date('tgl_pengembalian')->nullable();
+            $table->timestamp('tgl_pengembalian')->nullable();
             $table->string('status_peminjaman')->default('N');
             $table->timestamps();
 

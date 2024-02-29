@@ -26,7 +26,7 @@
             @foreach ($koleksi as $index => $item)
                 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
                     <a href="{{ route('buku.show', $item->buku->id) }}">
-                        <img class="rounded-t-lg" src="{{ $item->buku->foto }}" alt="" />
+                        <img class="rounded-t-lg w-[full] h-[245px]" src="{{ $item->buku->foto }}" alt="" />
                     </a>
                     <div class="p-5">
                         @foreach ($item->buku->kategoriBukuRelasi as $kategori)

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Booksmeade') }}</title>
+    <title>{{ config('Booksmeade') }}Booksmeade</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/logo-buku.png') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -17,47 +18,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased text-gray-900 bg-gray-50">
-    {{-- <nav class="fixed top-0 z-30 w-full bg-white border-b border-gray-200 shadow-l">
-        <div class="px-3 py-3 lg:px-5 lg:pl-3">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center justify-start">
-                </div>
-                <div class="flex items-center p-4">
-                    <button type="button" class="flex gap-4 items-center ms-3 font-medium"
-                        data-dropdown-toggle="dropdown-user">
-                        <span>{{ Auth::user()->name }}</span>
-                        <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
-                        </svg>
-                    </button>
-                    <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow"
-                        id="dropdown-user">
-                        <div class="px-4 py-3" role="none">
-                            <p class="text-sm text-gray-900" role="none">
-                                {{ Auth::user()->nama_lengkap }}
-                            </p>
-                            <p class="text-sm font-medium text-gray-900 truncate" role="none">
-                                {{ Auth::user()->email }}
-                            </p>
-                        </div>
-                        <ul class="py-1" role="none">
-                            <li>
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button type="submit"
-                                        class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                        role="menuitem">Logout</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav> --}}
+<body class="font-sans antialiased text-gray-900 bg-gray-50 h-screen">
     <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200">
         <div class="px-3 py-3 lg:px-5 lg:pl-3">
             <div class="flex items-center justify-between">
